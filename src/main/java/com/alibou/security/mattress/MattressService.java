@@ -7,6 +7,7 @@ import com.alibou.security.mattress.dto.MattressWithSizeResponseDto;
 import com.alibou.security.mattress.entities.Mattress;
 import com.alibou.security.mattress.entities.mattress_size.MattressSizeRepository;
 import com.alibou.security.mattress.entities.mattress_size.dto.MattressSizeCreateDto;
+import com.alibou.security.mattress.entities.mattress_size.dto.MattressSizeResponse;
 import com.alibou.security.mattress.entities.mattress_size.entity.MattressSize;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -135,6 +136,18 @@ public class MattressService {
             }
         }
         mattressRepository.deleteById(id);
+    }
+
+    public List<MattressSizeResponse> getMattressSizes() {
+        List<MattressSize> sizes = mattressSizeRepository.findAll();
+
+        return sizes.stream().map(size -> {
+            return new MattressSizeResponse(
+                    size.getId(),
+                    size.getSize(),
+                    size.getPrice()
+            );
+        }).toList();
     }
 }
 

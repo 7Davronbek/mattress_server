@@ -3,6 +3,7 @@ package com.alibou.security.mattress;
 import com.alibou.security.mattress.dto.MattressResponseDto;
 import com.alibou.security.mattress.dto.MattressWithSizeResponseDto;
 import com.alibou.security.mattress.entities.Mattress;
+import com.alibou.security.mattress.entities.mattress_size.dto.MattressSizeResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -42,5 +43,11 @@ public class MattressController {
     public ResponseEntity<MattressResponseDto> getMattress(@PathVariable UUID id) {
         MattressResponseDto mattress = mattressService.getMattress(id);
         return ResponseEntity.ok(mattress);
+    }
+
+    @GetMapping("/mattress-size")
+    public ResponseEntity<List<MattressSizeResponse>> getMattressSizes() {
+        List<MattressSizeResponse> mattressSizes = mattressService.getMattressSizes();
+        return ResponseEntity.ok(mattressSizes);
     }
 }
