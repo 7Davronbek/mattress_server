@@ -145,7 +145,8 @@ public class MattressService {
             return new MattressSizeResponse(
                     size.getId(),
                     size.getSize(),
-                    size.getPrice()
+                    size.getPrice(),
+                    size.getMattress().getId()
             );
         }).toList();
     }

@@ -13,4 +13,5 @@ public class MattressSizeResponse {
     private UUID id;
     private String size;
     private int price;
+    private UUID mattressId;
 }
